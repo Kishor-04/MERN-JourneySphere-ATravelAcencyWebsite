@@ -18,13 +18,11 @@ const packageRoutes = require('./routes/packageRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const AuthRouter = require('./routes/AuthRouter')
-const ProductRouter = require("./routes/ProductRouter")
 
 app.use('/packages', packageRoutes);
 app.use('/bookings', bookingRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth',AuthRouter );
-app.use("/products",ProductRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
