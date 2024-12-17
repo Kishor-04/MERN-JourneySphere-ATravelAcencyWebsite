@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import apiurl from '../lib/urls'
+
 
 const InvoicePage = () => {
     const { bookingId } = useParams(); // Get bookingId from the URL
@@ -10,7 +12,7 @@ const InvoicePage = () => {
     useEffect(() => {
         const fetchInvoiceData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/bookings/${bookingId}/invoiceData`);
+                const response = await axios.get(`${apiurl}/bookings/${bookingId}/invoiceData`);
                 setInvoiceData(response.data);  // Set invoice data
             } catch (error) {
                 console.error('Error fetching invoice data:', error);
@@ -18,7 +20,7 @@ const InvoicePage = () => {
         };
         
         // Set the PDF download URL
-        setPdfUrl(`http://localhost:5000/bookings/${bookingId}/invoicePDF`);
+        setPdfUrl(`${apiurl}/bookings/${bookingId}/invoicePDF`);
 
         fetchInvoiceData();  // Fetch invoice data from the server
     }, [bookingId]);

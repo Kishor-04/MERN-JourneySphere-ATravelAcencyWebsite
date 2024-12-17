@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import apiurl from '../lib/urls'
+
 
 const BookingForm = ({ packageId }) => {
     const [formData, setFormData] = useState({
@@ -20,7 +22,7 @@ const BookingForm = ({ packageId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/bookings', {
+            const response = await axios.post(`${apiurl}/bookings`, {
                 ...formData,
                 packageId,
             });

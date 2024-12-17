@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import BookingForm from '../components/BookingForm';
+import apiurl from '../lib/urls'
+
 
 const PackageDetailPage = () => {
     const { id } = useParams(); // Get the package ID from the URL
@@ -11,7 +13,7 @@ const PackageDetailPage = () => {
     useEffect(() => {
         const fetchPackageDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/packages/${id}`);
+                const response = await axios.get(`${apiurl}/packages/${id}`);
                 setPackageDetails(response.data);
             } catch (error) {
                 console.error('Error fetching package details:', error);

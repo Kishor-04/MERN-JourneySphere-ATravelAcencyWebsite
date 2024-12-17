@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavbarAdmin from '../components/NavbarAdmin';
-
+import apiurl from '../lib/urls'
 const AdminPage = () => {
     const [packages, setPackages] = useState([]);
     const [bookings, setBookings] = useState([]);
@@ -10,14 +10,15 @@ const AdminPage = () => {
 
     // Fetch packages from backend
     const fetchPackages = async () => {
-        const response = await axios.get('http://localhost:5000/packages');
+        console.log(apiurl);
+        const response = await axios.get(`${apiurl}/packages`);
         setPackages(response.data);
     };
 
     // Fetch all bookings for the admin
     const fetchBookings = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/admin/bookings');
+            const response = await axios.get(`${apiurl}/admin/bookings`);
             setBookings(response.data);
         } catch (error) {
             console.error('Error fetching bookings:', error);
@@ -36,11 +37,11 @@ const AdminPage = () => {
         try {
             if (editingPackage) {
                 // Update package if editing
-                await axios.put(`http://localhost:5000/admin/packages/${editingPackage._id}`, formData);
+                await axios.put(`${apiurl}/admin/packages/${editingPackage._id}`, formData);
                 alert("Edited Successfully");
             } else {
                 // Add new package
-                await axios.post('http://localhost:5000/admin/packages', formData);
+                await axios.post(`${apiurl}/admin/packages`, formData);
                 alert("Added Successfully");
             }
             setEditingPackage(null);
@@ -54,7 +55,7 @@ const AdminPage = () => {
     // Handle delete package
     const handleDeletePackage = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/admin/packages/${id}`);
+            await axios.delete(`${apiurl}/admin/packages/${id}`);
             alert("Deleted Successfully");
             fetchPackages();
 
@@ -142,26 +143,30 @@ const AdminPage = () => {
                     {/* Manage Packages */}
                     <h2 className="text-3xl font-bold mb-4">Manage Packages</h2>
                     <ul>
-                        {packages.map(pkg => (
-                            <li key={pkg._id} className="mb-6 p-6 border rounded-lg shadow bg-gray-50">
-                                <h3 className="font-bold text-xl">{pkg.title}</h3>
-                                <p>{pkg.description}</p>
-                                <div className="mt-4">
-                                    <button
-                                        onClick={() => handleEditPackage(pkg)}
-                                        className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-500"
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => handleDeletePackage(pkg._id)}
-                                        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-500"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
+                        {Array.isArray(packages) && packages.length > 0 ? (
+                            packages.map(pkg => (
+                                <li key={pkg._id} className="mb-6 p-6 border rounded-lg shadow bg-gray-50">
+                                    <h3 className="font-bold text-xl">{pkg.title}</h3>
+                                    <p>{pkg.description}</p>
+                                    <div className="mt-4">
+                                        <button
+                                            onClick={() => handleEditPackage(pkg)}
+                                            className="bg-blue-500 text-white px-4 py-2 rounded mr-2 hover:bg-blue-500"
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            onClick={() => handleDeletePackage(pkg._id)}
+                                            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-500"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </li>
+                            ))
+                        ) : (
+                            <p>No packages found.</p>
+                        )}
                     </ul>
 
                     <br /><br /><br />

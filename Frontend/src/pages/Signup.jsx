@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import apiurl from '../lib/urls'
 
 function Signup() {
   const [signupInfo, setSignupInfo] = useState({
@@ -24,7 +25,7 @@ function Signup() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/auth/signup", {
+      const response = await fetch(`${apiurl}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

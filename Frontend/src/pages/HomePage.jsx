@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import apiurl from '../lib/urls'
 
 const HomePage = () => {
     const [packages, setPackages] = useState([]);
@@ -11,7 +12,7 @@ const HomePage = () => {
     useEffect(() => {
         const fetchPackages = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/packages');
+                const response = await axios.get(`${apiurl}/packages`);
                 setPackages(response.data);
             } catch (error) {
                 console.error('Error fetching packages:', error);
