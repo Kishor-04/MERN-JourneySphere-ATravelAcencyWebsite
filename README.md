@@ -1,4 +1,4 @@
-JoutneySphere - A travel Agency Website
+JourneySphere - A travel Agency Website
 
 Project Description:
 
