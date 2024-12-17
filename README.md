@@ -11,39 +11,39 @@ Setup Instructions
 Backend Setup:
 
 Clone the repository:
-git clone <backend-repo-url>
+1.git clone https://github.com/Kishor-04/MERN-JourneySphere-ATravelAcencyWebsite/tree/main/Backend
 
-Navigate to the backend directory:
+2.Navigate to the backend directory:
 cd backend
 
-Install dependencies:
+3.Install dependencies:
 npm install
 
-Start the backend server:
+4.Start the backend server:
 npm start
 
-The backend will be running on http://localhost:5000.
+5.he backend will be running on http://localhost:5000.
 
 
 
 Frontend Setup
-Clone the repository:
-git clone <frontend-repo-url>
+1.Clone the repository:
+git clone https://github.com/Kishor-04/MERN-JourneySphere-ATravelAcencyWebsite/tree/main/Frontend
 
-Navigate to the frontend directory:
+2.Navigate to the frontend directory:
 cd frontend
 
-Install dependencies:
+3.Install dependencies:
 npm install
 
-Start the frontend application:
+4.Start the frontend application:
 npm start
 
-The frontend will be available on http://localhost:3000.
+5.The frontend will be available on http://localhost:3000.
 
 
 
-Environment Variables
+--Environment Variables
 For proper functioning, create a .env file in the backend with the following variables:
 
 PORT=5000
@@ -53,29 +53,29 @@ DB_URL=<your_database_url>
 
 
 Features
-Authentication
+1.Authentication
 Login: Users can securely log into their accounts using their email and password.
 Signup: Users can create new accounts by providing their name, email, and password.
 
-User Experience
+2.User Experience
 Fully responsive design using Tailwind CSS.
 Modern and attractive UI with blur effects and themed components.
 
-Token Management
+3.Token Management
 JWT-based authentication for secure and efficient user sessions.
 Token stored in localStorage for persistent user login.
 
-Navigation
+4.Navigation
 Smooth navigation between Login, Signup, and Home pages using React Router.
 
-Error Handling
+5.Error Handling
 Informative alerts for missing or incorrect input fields.
 Display server-side error messages for failed requests.
 
 
 
 Future Enhancements
-Implement password reset functionality.
-Add social media login options (e.g., Google, Facebook).
-Enhance security with CAPTCHA and multi-factor authentication.
-Integrate a dashboard for logged-in users to manage their profiles.
+1.Implement password reset functionality.
+2.Add social media login options (e.g., Google, Facebook).
+3.Enhance security with CAPTCHA and multi-factor authentication.
+4.Integrate a dashboard for logged-in users to manage their profiles.
